@@ -35,7 +35,7 @@ var db = class db {
 }
 
 bot.on('command blocked', (msg)=>{
-	
+	msg.send('What are you doing?')
 })
 
 function owneronly(f) {
@@ -51,6 +51,7 @@ db = new db()
 bot.command('echo', (msg, ...args) => {
     msg.send(args.join(' '))
 }, 'Repeats what you say (usage: >echo [msg]')
+
 bot.command('id', (msg) => {
     msg.send(msg.user.id)
 }, 'Get your id') // you can handle invaild commands now :)
@@ -108,6 +109,7 @@ bot.command('fake-typing', (msg, t='1000') =>{
         bot.endtyping() // seams that i leaned on the keybord
     });
 }, 'Makes it look like the bot is typing. (usage: >fake-typing [ms])')
+
 // hey you might wanna make this owner only idk true
 bot.command('block-usr', owneronly((msg, user)=>{
     user = bot.getUser({
@@ -265,5 +267,71 @@ default:
 	}
 	msg.send(`${args} is you new string.`)
 }, 'Converts the string into various diffrent unicode charater sets. (Usage: >fonts [id number 1-12] [message])')
+
+bot.command('random-font', (msg, ...args) =>{
+	a = ["ᾇ","Λ","卂","ꪖ","🅰","Ꮧ","₳","ᴀ","ɐ","✌︎","♋︎","ঞ"];
+	b = ["β","B","乃","᥇","🅱","Ᏸ","฿","ʙ","q","👌︎","♌︎","၉"];
+	c = ["ç","ᄃ","匚","ᥴ","🅲","ፈ","₵","ᴄ","ɔ","👍︎","♍︎","の"];
+	d = ["δ","D","ᗪ","ᦔ","🅳","Ꮄ","Đ","ᴅ","d","👎︎","♎︎","ஞ"];
+	e = ["ễ","Σ","乇","ꫀ","🅴","Ꮛ","Ɇ","ᴇ","ǝ","☜︎","♏︎","≽"];
+	f = ["ƒ","F","千","ᠻ","🅵","Ꭶ","₣","ꜰ","ɟ","☞︎","♐︎","≼"];
+	g = ["ρ","G","Ꮆ","ᧁ","🅶","Ꮆ","₲","ɢ","ƃ","☝︎","♑︎","⋞"];
+	h = ["ԣ","Ή","卄","ꫝ","🅷","Ꮒ","Ⱨ","ʜ","ɥ","☟︎","♒︎","⋟"];
+	i = ["ï","I","丨","꠸","🅸","Ꭵ","ł","ɪ","ᴉ","✋︎","♓︎","o"];
+	j = ["J","J","フ","꠹","🅹","Ꮰ","J","ᴊ","ɾ","☺︎","🙰","1"];
+	k = ["ƙ","K","Ҝ","ᛕ","🅺","Ꮶ","₭","ᴋ","ʞ","😐︎","🙵","2"];
+	l = ["l","ᄂ","ㄥ","ꪶ","🅻","Ꮭ","Ⱡ","ʟ","l","☹","●","3"];
+	m = ["ဣ","M","爪","ꪑ","🅼","Ꮇ","₥","ᴍ","ɯ","💣︎","❍︎","4"];
+	n = ["ἧ","П","几","ꪀ","🅽","Ꮑ","₦","ɴ","n","☠︎","■︎","5"];
+	o = ["ô","Ө","ㄖ","ꪮ","🅾","Ꭷ","Ø","ᴏ","o","⚐︎","□︎","6"];
+	p = [];
+	q = [];
+	r = [];
+	s = [];
+	t = [];
+	u = [];
+	v = [];
+	w = [];
+	x = [];
+	y = [];
+	z = [];
+	A = [];
+	B = [];
+	C = [];
+	D = [];
+	E = [];
+	F = [];
+	G = [];
+	H = [];
+	I = [];
+	J = [];
+	K = [];
+	L = [];
+	M = [];
+	N = [];
+	O = [];
+	P = [];
+	Q = [];
+	R = [];
+	S = [];
+	T = [];
+	U = [];
+	V = [];
+	W = [];
+	X = [];
+	Y = [];
+	Z = [];
+	n1 = [];
+	n2 = [];
+	n3 = [];
+	n4 = [];
+	n5 = [];
+	n6 = [];
+	n7 = [];
+	n8 = [];
+	n9 = [];
+	n0 = [];
+	
+})
 
 bot.connect()
