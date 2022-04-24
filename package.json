@@ -1,5 +1,28 @@
 {
   "dependencies": {
     "campchat": "^1.0.7"
-  }
+  },
+  "name": "campfire_companion",
+  "version": "1.0.1",
+  "description": "A bot for https://chat.gingerindustries.repl.co/. Made using the Campchat API.",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm run index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inyourface34456/campfire-bot.git"
+  },
+  "keywords": [
+    "bot",
+    "chat",
+    "campchat"
+  ],
+  "author": "inyourface3445",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inyourface34456/campfire-bot/issues"
+  },
+  "homepage": "https://github.com/inyourface34456/campfire-bot#readme"
 }

@@ -1,4 +1,5 @@
 const Bot = require('campchat').Bot
+const http = require('http')
 const fs = require('fs')
 let bot = new Bot('>', 'inyourface', '#00ff00')
 bot.block_db((type, value)=>{
@@ -18,6 +19,13 @@ bot.block_db((type, value)=>{
     }
 })
 let db_inner = {}
+const host = '0.0.0.0';
+const port = 8000;
+const requestListener = function (req, res) {
+    res.writeHead(200);
+    res.end("My first server!");
+};
+const server = http.createServer(requestListener);
 
 function sleep (time) {
   return new Promise((resolve) => setTimeout(resolve, time));
@@ -269,69 +277,130 @@ default:
 }, 'Converts the string into various diffrent unicode charater sets. (Usage: >fonts [id number 1-12] [message])')
 
 bot.command('random-font', (msg, ...args) =>{
-	a = ["ᾇ","Λ","卂","ꪖ","🅰","Ꮧ","₳","ᴀ","ɐ","✌︎","♋︎","ঞ"];
-	b = ["β","B","乃","᥇","🅱","Ᏸ","฿","ʙ","q","👌︎","♌︎","၉"];
-	c = ["ç","ᄃ","匚","ᥴ","🅲","ፈ","₵","ᴄ","ɔ","👍︎","♍︎","の"];
-	d = ["δ","D","ᗪ","ᦔ","🅳","Ꮄ","Đ","ᴅ","d","👎︎","♎︎","ஞ"];
-	e = ["ễ","Σ","乇","ꫀ","🅴","Ꮛ","Ɇ","ᴇ","ǝ","☜︎","♏︎","≽"];
-	f = ["ƒ","F","千","ᠻ","🅵","Ꭶ","₣","ꜰ","ɟ","☞︎","♐︎","≼"];
-	g = ["ρ","G","Ꮆ","ᧁ","🅶","Ꮆ","₲","ɢ","ƃ","☝︎","♑︎","⋞"];
-	h = ["ԣ","Ή","卄","ꫝ","🅷","Ꮒ","Ⱨ","ʜ","ɥ","☟︎","♒︎","⋟"];
-	i = ["ï","I","丨","꠸","🅸","Ꭵ","ł","ɪ","ᴉ","✋︎","♓︎","o"];
-	j = ["J","J","フ","꠹","🅹","Ꮰ","J","ᴊ","ɾ","☺︎","🙰","1"];
-	k = ["ƙ","K","Ҝ","ᛕ","🅺","Ꮶ","₭","ᴋ","ʞ","😐︎","🙵","2"];
-	l = ["l","ᄂ","ㄥ","ꪶ","🅻","Ꮭ","Ⱡ","ʟ","l","☹","●","3"];
-	m = ["ဣ","M","爪","ꪑ","🅼","Ꮇ","₥","ᴍ","ɯ","💣︎","❍︎","4"];
-	n = ["ἧ","П","几","ꪀ","🅽","Ꮑ","₦","ɴ","n","☠︎","■︎","5"];
-	o = ["ô","Ө","ㄖ","ꪮ","🅾","Ꭷ","Ø","ᴏ","o","⚐︎","□︎","6"];
-	p = [];
-	q = [];
-	r = [];
-	s = [];
-	t = [];
-	u = [];
-	v = [];
-	w = [];
-	x = [];
-	y = [];
-	z = [];
-	A = [];
-	B = [];
-	C = [];
-	D = [];
-	E = [];
-	F = [];
-	G = [];
-	H = [];
-	I = [];
-	J = [];
-	K = [];
-	L = [];
-	M = [];
-	N = [];
-	O = [];
-	P = [];
-	Q = [];
-	R = [];
-	S = [];
-	T = [];
-	U = [];
-	V = [];
-	W = [];
-	X = [];
-	Y = [];
-	Z = [];
-	n1 = [];
-	n2 = [];
-	n3 = [];
-	n4 = [];
-	n5 = [];
-	n6 = [];
-	n7 = [];
-	n8 = [];
-	n9 = [];
-	n0 = [];
-	
-})
+	args = args.join(' ')
+	args = args.toLowerCase()
+	var thechars = ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"];
+	var a = ["ᾇ","Λ","卂","ꪖ","🅰","Ꮧ","₳","ᴀ","ɐ","✌︎","♋︎","ঞ"];
+	var b = ["β","B","乃","᥇","🅱","Ᏸ","฿","ʙ","q","👌︎","♌︎","၉"];
+	var c = ["ç","ᄃ","匚","ᥴ","🅲","ፈ","₵","ᴄ","ɔ","👍︎","♍︎","の"];
+	var d = ["δ","D","ᗪ","ᦔ","🅳","Ꮄ","Đ","ᴅ","d","👎︎","♎︎","ஞ"];
+	var e = ["ễ","Σ","乇","ꫀ","🅴","Ꮛ","Ɇ","ᴇ","ǝ","☜︎","♏︎","≽"];
+	var f = ["ƒ","F","千","ᠻ","🅵","Ꭶ","₣","ꜰ","ɟ","☞︎","♐︎","≼"];
+	var g = ["ρ","G","Ꮆ","ᧁ","🅶","Ꮆ","₲","ɢ","ƃ","☝︎","♑︎","⋞"];
+	var h = ["ԣ","Ή","卄","ꫝ","🅷","Ꮒ","Ⱨ","ʜ","ɥ","☟︎","♒︎","⋟"];
+	var i = ["ï","I","丨","꠸","🅸","Ꭵ","ł","ɪ","ᴉ","✋︎","♓︎","o"];
+	var j = ["J","J","フ","꠹","🅹","Ꮰ","J","ᴊ","ɾ","☺︎","🙰","1"];
+	var k = ["ƙ","K","Ҝ","ᛕ","🅺","Ꮶ","₭","ᴋ","ʞ","😐︎","🙵","2"];
+	var l = ["l","ᄂ","ㄥ","ꪶ","🅻","Ꮭ","Ⱡ","ʟ","l","☹","●","3"];
+	var m = ["ဣ","M","爪","ꪑ","🅼","Ꮇ","₥","ᴍ","ɯ","💣︎","❍︎","4"];
+	var n = ["ἧ","П","几","ꪀ","🅽","Ꮑ","₦","ɴ","n","☠︎","■︎","5"];
+	var o = ["ô","Ө","ㄖ","ꪮ","🅾","Ꭷ","Ø","ᴏ","o","⚐︎","□︎","6"];
+	var p = ["ƥ","P","卩","ρ","🅿","Ꭾ","₱","ᴘ","d","🏱︎","◻︎","7"];
+	var q = ["႖","Q","Ɋ","ꪇ","🆀","Ꭴ","Q","Q","b","✈︎","❑︎","8"];
+	var r = ["ř","Я","尺","᥅","🆁","Ꮢ","Ɽ","ꜱ","ɹ","☼︎","❒︎","10"];
+	var s = ["ƨ","Ƨ","丂","ᦓ","🆂","Ꮥ","₴","s","💧︎","⬧︎","10"];
+	var t = ["ƭ","Ƭ","ㄒ","ꪻ","🆃","Ꮦ","₮","ᴛ","ʇ","❄︎","⧫︎","⓿"];
+	var u = ["ᵿ","Ц","ㄩ","ꪊ","🆄","Ꮼ","Ʉ","ᴜ","n","🕆︎","◆︎","❶"];
+	var v = ["ṽ","V","ᐯ","ꪜ","🆅","Ꮙ","V","ᴠ","ʌ","✞︎","❖︎","❷"];
+	var w = ["ὧ","Щ","山","᭙","🆆","Ꮗ","₩","ᴡ","ʍ","🕈︎","⬥︎","❸"];
+	var x = ["ж","X","乂","᥊","🆇","ጀ","Ӿ","x","x","✠︎","⌧︎","❹"];
+	var y = ["¥","Y","ㄚ","ꪗ","🆈","Ꭹ","Ɏ","ʏ","ʎ","✡︎","⍓︎","❺"];
+	var z = ["ƺ","Z","乙","ƺ","🆉","ፚ","Ⱬ","ᴢ","z","☪︎","⌘︎","❻"];
+	/*var A = [];
+	var B = [];
+	var C = [];
+	var D = [];
+	var E = [];
+	var F = [];
+	var G = [];
+	var H = [];
+	var I = [];
+	var J = [];
+	var K = [];
+	var L = [];
+	var M = [];
+	var N = [];
+	var O = [];
+	var P = [];
+	var Q = [];
+	var R = [];
+	var S = [];
+	var T = [];
+	var U = [];
+	var V = [];
+	var W = [];
+	var X = [];
+	var Y = [];
+	var Z = [];
+	var n1 = [];
+	var n2 = [];
+	var n3 = [];
+	var n4 = [];
+	var n5 = [];
+	var n6 = [];
+	var n7 = [];
+	var n8 = [];
+	var n9 = [];
+	var n0 = [];*/
+	var randomelement = Math.floor(Math.random() * 11);
+	thechars[0] = a[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[1] = b[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[2] = c[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[3] = d[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[4] = e[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[5] = f[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[6] = g[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[7] = h[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[8] = i[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[9] = j[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[10] = k[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[11] = l[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[12] = m[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[13] = n[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[14] = o[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[15] = p[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[16] = q[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[17] = r[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[18] = s[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[19] = t[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[20] = u[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[21] = v[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[22] = w[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[23] = x[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[24] = y[randomelement]
+	randomelement = Math.floor(Math.random() * 11);
+	thechars[25] = z[randomelement]
+	for (var i = 0; i <= 256; i++){
+	args = args.replace('a', thechars[0]).replace('b', thechars[1]).replace('c', thechars[2]).replace('d', thechars[3]).replace('e', thechars[4]).replace('f', thechars[5]).replace('g', thechars[6]).replace('h', thechars[7]).replace('i', thechars[8]).replace('j', thechars[9]).replace('k', thechars[10]).replace('l', thechars[11]).replace('m', thechars[12]).replace('n', thechars[13]).replace('o', thechars[14]).replace('p', thechars[15]).replace('q', thechars[16]).replace('r', thechars[17]).replace('s', thechars[18]).replace('t', thechars[19]).replace('u', thechars[20]).replace('v', thechars[21]).replace('w', thechars[22]).replace('x', thechars[23]).replace('y', thechars[24]).replace('z', thechars[25]);}
+	msg.send(`${args} is your new string.`)
+}, 'Take a string and makes each charater a 1 of 12 diffrent letter varients, randomly. (Usage: >random-font [string])')
 
 bot.connect()
+
+server.listen(port, host, () => {
+    console.log(`Server is running on http://${host}:${port}`);
+});
