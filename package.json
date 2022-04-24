@@ -3,7 +3,7 @@
     "campchat": "^1.0.7"
   },
   "name": "campfire_companion",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A bot for https://chat.gingerindustries.repl.co/. Made using the Campchat API.",
   "main": "index.js",
   "devDependencies": {},
